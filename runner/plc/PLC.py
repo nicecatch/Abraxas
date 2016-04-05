@@ -19,17 +19,17 @@ class PLC():
         self.slot = slot
         self.connect()
     
-    def read(self):
+    def __read(self):
         read = self.snap7.read_area(areas['DB'], 105, 0, 16)
         return [util.get_int(read, 2), util.get_int(read, 4)]
     
     def readValue(self):
         try:
-            return self.read()
+            return self.__read()
         except Snap7Exception as error: #Errore, provo una volta a ricollegarmi e a rileggere
             try:
                 self.connect()
-                return self.read()
+                return self.__read()
             
             except Snap7Exception as error:
                 print "Unexpected error: ", error
