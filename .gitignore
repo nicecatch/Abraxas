@@ -1,0 +1,9 @@
+bower_components/
+node_modules/
+.settings/
+__pycache__/
+
+db.sqlite3
+
+.project
+.pydevproject
